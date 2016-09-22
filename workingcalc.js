@@ -5,21 +5,21 @@ var operator;
 
 // TODO: DEFINE YOUR FUNCTIONS HERE
 
-function add(firstValue, secondValue) {
-  return Number(firstValue, 10) + Number(secondValue, 10);
-}
+//function add(firstValue, secondValue) {
+//  return Number(firstValue, 10) + Number(secondValue, 10);
+//}
 
-function subtract(firstValue, secondValue) {
-  return Number(secondValue, 10) - Number(firstValue, 10);
-}
+//function subtract(firstValue, secondValue) {
+//  return Number(secondValue, 10) - Number(firstValue, 10);
+//}
 
-function divide(firstValue, secondValue) {
-  return Number(firstValue, 10) / Number(secondValue, 10);
-}
+//function divide(firstValue, secondValue) {
+//  return Number(secondValue, 10) / Number(firstValue, 10);
+//}
 
-function multiply(firstValue, secondValue) {
-  return Number(firstValue, 10) * Number(secondValue, 10);
-}
+//function multiply(firstValue, secondValue) {
+//  return Number(firstValue, 10) * Number(secondValue, 10);
+//}
 
 
 /**
@@ -39,9 +39,8 @@ function handleButtonClick(buttonValue) {
   if (buttonValue === "clear") {
     runningTotal = 0;
     buffer = "";
-    operator = "";
     updateDisplay(buffer);
-  } else if (buttonValue === "x") {
+  } else if (buttonValue === "*") {
     runningTotal = add(buffer, runningTotal);
     operator = 1;
     buffer = "";
@@ -62,19 +61,19 @@ function handleButtonClick(buttonValue) {
     buffer = "";
     updateDisplay(runningTotal);
   } else if (buttonValue === "=" && operator == 1) {
-    runningTotal = multiply(runningTotal, buffer);
+    runningTotal = buffer * runningTotal;
     buffer = "";
     updateDisplay(runningTotal);
-  } else if (buttonValue === "=" && operator == 2) {
-    runningTotal = divide(runningTotal, buffer);
+    } else if (buttonValue === "=" && operator == 2) {
+    runningTotal = runningTotal / buffer;
     buffer = "";
     updateDisplay(runningTotal);
   } else if (buttonValue === "=" && operator == 3) {
-    runningTotal = add(runningTotal, buffer);
+    runningTotal = buffer + runningTotal;
     buffer = "";
     updateDisplay(runningTotal);
   } else if (buttonValue === "=" && operator == 4) {
-    runningTotal = subtract(runningTotal, buffer);
+    runningTotal = buffer - runningTotal;
     buffer = "";
     updateDisplay(runningTotal);
   } else {

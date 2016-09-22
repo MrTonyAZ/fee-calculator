@@ -14,7 +14,7 @@ function subtract(firstValue, secondValue) {
 }
 
 function divide(firstValue, secondValue) {
-  return Number(firstValue, 10) / Number(secondValue, 10);
+  return Number(firstValue) / Number(secondValue);
 }
 
 function multiply(firstValue, secondValue) {
@@ -39,9 +39,8 @@ function handleButtonClick(buttonValue) {
   if (buttonValue === "clear") {
     runningTotal = 0;
     buffer = "";
-    operator = "";
     updateDisplay(buffer);
-  } else if (buttonValue === "x") {
+  } else if (buttonValue === "*") {
     runningTotal = add(buffer, runningTotal);
     operator = 1;
     buffer = "";
@@ -62,19 +61,19 @@ function handleButtonClick(buttonValue) {
     buffer = "";
     updateDisplay(runningTotal);
   } else if (buttonValue === "=" && operator == 1) {
-    runningTotal = multiply(runningTotal, buffer);
+    runningTotal = multiply(buffer, runningTotal);
     buffer = "";
     updateDisplay(runningTotal);
-  } else if (buttonValue === "=" && operator == 2) {
-    runningTotal = divide(runningTotal, buffer);
+    } else if (buttonValue === "=" && operator == 2) {
+    runningTotal = divide(buffer, runningTotal);
     buffer = "";
     updateDisplay(runningTotal);
   } else if (buttonValue === "=" && operator == 3) {
-    runningTotal = add(runningTotal, buffer);
+    runningTotal = add(buffer, runningTotal);
     buffer = "";
     updateDisplay(runningTotal);
   } else if (buttonValue === "=" && operator == 4) {
-    runningTotal = subtract(runningTotal, buffer);
+    runningTotal = subtract(buffer, runningTotal);
     buffer = "";
     updateDisplay(runningTotal);
   } else {
