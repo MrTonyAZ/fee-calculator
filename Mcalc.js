@@ -1,25 +1,10 @@
 // TODO: DEFINE ANY VARIABLES HERE
 var buffer = "";
 var runningTotal = 0;
-var operator;
+
 
 // TODO: DEFINE YOUR FUNCTIONS HERE
 
-function add(firstValue, secondValue) {
-  return Number(firstValue, 10) + Number(secondValue, 10);
-}
-
-function subtract(firstValue, secondValue) {
-  return Number(secondValue, 10) - Number(firstValue, 10);
-}
-
-function divide(firstValue, secondValue) {
-  return Number(firstValue) / Number(secondValue);
-}
-
-function multiply(firstValue, secondValue) {
-  return Number(firstValue, 10) * Number(secondValue, 10);
-}
 
 
 /**
@@ -40,47 +25,68 @@ function handleButtonClick(buttonValue) {
     runningTotal = 0;
     buffer = "";
     updateDisplay(buffer);
-  } else if (buttonValue === "*") {
-    runningTotal = add(buffer, runningTotal);
-    operator = 1;
-    buffer = "";
-    updateDisplay(runningTotal);
-  } else if (buttonValue === "/") {
-    runningTotal = add(buffer, runningTotal);
-    operator = 2;
-    buffer = "";
-    updateDisplay(runningTotal);
   } else if (buttonValue === "+") {
+    runningTotal = add(buffer, runningTotal)
+    buffer = "";
+    updateDisplay(runningTotal);
+  } else if (buttonValue === "=") {
     runningTotal = add(buffer, runningTotal);
-    operator = 3;
-    buffer = "";
-    updateDisplay(runningTotal);
-  } else if (buttonValue === "-") {
-    runningTotal = add(buffer, runningTotal);
-    operator = 4;
-    buffer = "";
-    updateDisplay(runningTotal);
-  } else if (buttonValue === "=" && operator == 1) {
-    runningTotal = multiply(buffer, runningTotal);
-    buffer = "";
-    updateDisplay(runningTotal);
-    } else if (buttonValue === "=" && operator == 2) {
-    runningTotal = divide(buffer, runningTotal);
-    buffer = "";
-    updateDisplay(runningTotal);
-  } else if (buttonValue === "=" && operator == 3) {
-    runningTotal = add(buffer, runningTotal);
-    buffer = "";
-    updateDisplay(runningTotal);
-  } else if (buttonValue === "=" && operator == 4) {
-    runningTotal = subtract(buffer, runningTotal);
     buffer = "";
     updateDisplay(runningTotal);
   } else {
     buffer += buttonValue;
     updateDisplay(buffer);
   }
+
+  function handleButtonClick(buttonValue) {
+    if (buttonValue === "clear") {
+      runningTotal = 0;
+      buffer = "";
+      updateDisplay(buffer);
+    } else if (buttonValue === "-") {
+      runningTotal = subtract(buffer, runningTotal)
+      buffer = "";
+      updateDisplay(runningTotal);
+    } else if (buttonValue === "=") {
+      runningTotal = subtract(buffer, runningTotal);
+      buffer = "";
+      updateDisplay(runningTotal);
+    } else {
+      buffer += buttonValue;
+      updateDisplay(buffer);
+    }
+
+
+
+
+
+
+
+
+
+function add(firstValue, secondValue) {
+  return Number(firstValue, 10) + Number(secondValue, 10);
 }
+
+function subtract(firstValue, secondValue) {
+  return Number(secondValue, 10) - Number(firstValue, 10);
+}
+
+function divide(firstValue, secondValue) {
+  return Number(firstValue, 10) / Number(secondValue, 10);
+}
+
+function multiply(firstValue, secondValue) {
+  return Number(firstValue, 10) * Number(secondValue, 10);
+}
+
+
+
+
+
+
+
+
 
 /** **************************************************************
  * These are our tests. If any of them fail you will see a message

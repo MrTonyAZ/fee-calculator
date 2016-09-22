@@ -14,7 +14,7 @@ function subtract(firstValue, secondValue) {
 }
 
 function divide(firstValue, secondValue) {
-  return Number(firstValue) / Number(secondValue);
+  return Number(firstValue, 10) / Number(secondValue, 10);
 }
 
 function multiply(firstValue, secondValue) {
@@ -40,47 +40,40 @@ function handleButtonClick(buttonValue) {
     runningTotal = 0;
     buffer = "";
     updateDisplay(buffer);
-  } else if (buttonValue === "*") {
+  } else if (buttonValue === "+") {
     runningTotal = add(buffer, runningTotal);
     operator = 1;
     buffer = "";
     updateDisplay(runningTotal);
-  } else if (buttonValue === "/") {
+  } else if (buttonValue === "-") {
     runningTotal = add(buffer, runningTotal);
     operator = 2;
     buffer = "";
     updateDisplay(runningTotal);
-  } else if (buttonValue === "+") {
-    runningTotal = add(buffer, runningTotal);
-    operator = 3;
-    buffer = "";
-    updateDisplay(runningTotal);
-  } else if (buttonValue === "-") {
-    runningTotal = add(buffer, runningTotal);
-    operator = 4;
-    buffer = "";
-    updateDisplay(runningTotal);
-  } else if (buttonValue === "=" && operator == 1) {
-    runningTotal = multiply(buffer, runningTotal);
-    buffer = "";
-    updateDisplay(runningTotal);
-    } else if (buttonValue === "=" && operator == 2) {
-    runningTotal = divide(buffer, runningTotal);
-    buffer = "";
-    updateDisplay(runningTotal);
-  } else if (buttonValue === "=" && operator == 3) {
-    runningTotal = add(buffer, runningTotal);
-    buffer = "";
-    updateDisplay(runningTotal);
-  } else if (buttonValue === "=" && operator == 4) {
-    runningTotal = subtract(buffer, runningTotal);
-    buffer = "";
-    updateDisplay(runningTotal);
+  } else if (buttonValue == "=" && operator == 1) {
+      runningTotal = buffer - runningTotal;
+      buffer = "";
+      updateDisplay(runningTotal);
+    } else if (buttonValue == "=" && operator == 2) {
+      runningTotal = subtract(buffer, runningTotal);
+      buffer = "";
+      updateDisplay(runningTotal);
+    }
   } else {
     buffer += buttonValue;
     updateDisplay(buffer);
   }
+
+
 }
+
+
+
+
+
+
+
+
 
 /** **************************************************************
  * These are our tests. If any of them fail you will see a message
